@@ -1,19 +1,21 @@
-# StackStorm Exchange Incubator
+# StackStorm Infoblox Pack
 
-### What is this?
+![](https://s3-us-west-1.amazonaws.com/infobloxcdn/wp-content/uploads/2016/05/07230930/logo.png)
 
-This repository is a very special place where user-submitted packs get reviewed, perfected, approved, and finally transferred to the Exchange.
+This is a pack for integrating with an Infoblox server and driving the Web API from StackStorm.
 
-If you want to submit your pack, it's simple! **Fork this repo, create a subdirectory with your pack, and open a Pull Request.** We'll take it from here. Even if your pack is work-in-progress, you can still submit it to get advice and early feedback from our engineers! Or ping us [on Slack](https://stackstorm.com/community-signup), which is generally the best place to get advice from the StackStorm Community.
+# Actions
 
-Before you submit a pack, make sure to read the [Create and Contribute a Pack](https://docs.stackstorm.com/reference/packs.html) section of our documentation.
+This pack has many actions for fetching of data from an Infoblox server, 
 
-Here's N.E.P.T.R. the StackStorm Exchange Governor, giving you a thumbs-up:
+- Managing DNS records, A, AAAA, PTR, TXT, CNAME etc.
+- Managing fixed IPv4 and IPv6 addresses
+- Managing infoblox network, networkviews and views
 
-![](http://i.imgur.com/3bqVAh0.gif)
+## Authors
 
-## Contributors License Agreement
+Created by the team in Dimension Data Europe
 
-By contributing you agree that these contributions are your own (or approved by your employer) and
-you grant a full, complete, irrevocable copyright license to all users and developers of the
-project, present and future, pursuant to the license of the project.
+ - @andrepferreira
+ - @mlemartien
+ - @tonybaloney

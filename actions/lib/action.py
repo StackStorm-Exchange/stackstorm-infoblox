@@ -20,8 +20,8 @@ class InfobloxBaseAction(Action):
         _password = self.config['password']
 
         opts = {
-            'host': _hostname, 
-            'username': _username, 
+            'host': _hostname,
+            'username': _username,
             'password': _password,
             'ssl_verify': self.config['verify_ssl'],
             'silent_ssl_warnings': (not self.config['verify_ssl'])

@@ -4,6 +4,7 @@ __all__ = [
     'GetObjectAction',
 ]
 
+
 class GetObjectAction(InfobloxBaseAction):
     def run(self, object_type, **kwargs):
         # remove null values as the API treats those as expected

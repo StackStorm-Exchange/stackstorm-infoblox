@@ -6,7 +6,7 @@
     required: true
     default: "alphonse"
   password:
-    description: "Username password for authenticating to Infloblox"
+    description: "Password for authenticating to Infloblox"
     type: "string"
     secret: true
     required: true

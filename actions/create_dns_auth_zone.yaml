@@ -1,0 +1,33 @@
+---
+name: create_dns_auth_zone
+runner_type: python-script
+description: Create an authoritative zone for DNS
+enabled: true
+entry_point: create_object.py
+parameters:
+  object_type:
+    type: string
+    immutable: true
+    default: 'zone_auth'
+  view:
+    type: string
+    default: 'default'
+    description: The name of the DNS view in which the zone resides
+  fqdn:
+    type: string
+    required: true
+    description: The name of creating DNS zone
+  grid_primary:
+    type: array
+    description: The grid primary servers for creating zone
+    properties:
+      name:
+        type: string
+  external_secondaries:
+    type: array
+    description: The list of external secondary servers
+    properties:
+      name:
+        type: string
+      address:
+        type: string

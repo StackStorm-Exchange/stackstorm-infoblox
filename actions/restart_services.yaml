@@ -1,0 +1,6 @@
+---
+name: restart_services
+runner_type: python-script
+description: Restart all member services
+enabled: true
+entry_point: restart_services.py

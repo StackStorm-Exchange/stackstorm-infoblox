@@ -12,6 +12,41 @@ __all__ = [
 ]
 
 
+class InfobloxConnector(connector.Connector):
+    CONVERTING_KEY_MAP = {
+        '_ref': 'ref'
+    }
+
+    def _inspect_and_interchane_dict(self, dict_value):
+        if not isinstance(dict_value, dict):
+            # When non-dict value is specified, this returns it without inspection
+            return dict_value
+
+        for key in dict_value.keys():
+            # This routine also inspect every leaf elements.
+            if isinstance(dict_value[key], dict):
+                dict_value[key] = self._inspect_and_interchane_dict(dict_value[key])
+            elif isinstance(dict_value[key], list):
+                dict_value[key] = [self._inspect_and_interchane_dict(x) for x in dict_value[key]]
+
+            # This detoxifies returned value when returned value has harmful key-value pairs
+            # for st2 (e.g. '_ref' key)
+            if key in self.CONVERTING_KEY_MAP:
+                dict_value[self.CONVERTING_KEY_MAP[key]] = dict_value.pop(key)
+
+        return dict_value
+
+    def get_object(self, *args, **kwargs):
+        """
+        The original method returns dict value that st2 doens't take care (e.g. '_ref'
+        key-value pairs). This method interchanges this key to another harmless one.
+        """
+        # The get_object method of infoblox-client returns list of Infoblox objects
+        results = super(InfobloxConnector, self).get_object(*args, **kwargs)
+
+        return [self._inspect_and_interchane_dict(x) for x in results]
+
+
 class InfobloxBaseAction(Action):
     def __init__(self, config):
         super(InfobloxBaseAction, self).__init__(config)
@@ -27,4 +62,4 @@ class InfobloxBaseAction(Action):
             'silent_ssl_warnings': (not self.config['verify_ssl'])
         }
 
-        self.connection = connector.Connector(opts)
+        self.connection = InfobloxConnector(opts)

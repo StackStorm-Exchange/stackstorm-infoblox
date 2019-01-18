@@ -1,0 +1,18 @@
+---
+name: delete_arecord
+pack: infoblox
+runner_type: orquesta
+description: Delete A Records
+entry_point: workflows/delete_arecord.yaml
+enabled: true
+parameters:
+  ipv4addr:
+    type: string
+    description: Filter by IPv4 address
+  name: 
+    type: string
+    description: Record name to be deleted
+    required: true
+  view:
+    type: string
+    description: Filter by DNS view

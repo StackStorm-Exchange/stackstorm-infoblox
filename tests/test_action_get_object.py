@@ -30,6 +30,11 @@ class GetObjectTestCase(InfobloxBaseActionTestCase):
                 # The case '_ref' string values in a list, these are harmless.
                 'raw': [{'fuga': ['_ref', 'foo']}, '_ref'],
                 'exp': [{'fuga': ['_ref', 'foo']}, '_ref'],
+            },
+            {
+                # The case non-list value is returned.
+                'raw': None,
+                'exp': None,
             }
         ]
 

@@ -41,10 +41,14 @@ class InfobloxConnector(connector.Connector):
         The original method returns dict value that st2 doens't take care (e.g. '_ref'
         key-value pairs). This method interchanges this key to another harmless one.
         """
-        # The get_object method of infoblox-client returns list of Infoblox objects
         results = super(InfobloxConnector, self).get_object(*args, **kwargs)
 
-        return [self._inspect_and_interchane_dict(x) for x in results]
+        # The get_object method of infoblox-client returns list of Infoblox objects.
+        # But when there is no Infoblox object to be returned, this method returns None.
+        if isinstance(results, list):
+            return [self._inspect_and_interchane_dict(x) for x in results]
+        else:
+            return results
 
 
 class InfobloxBaseAction(Action):

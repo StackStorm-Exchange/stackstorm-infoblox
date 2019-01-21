@@ -1,0 +1,15 @@
+---
+name: delete_cnamerecord
+pack: infoblox
+runner_type: orquesta
+description: Delete CNAME records
+enabled: true
+entry_point: workflows/delete_cnamerecord.yaml
+parameters:
+  name:
+    type: string
+    description: Record name to be deleted
+    required: true
+  zone:
+    type: string
+    description: Filter by zone

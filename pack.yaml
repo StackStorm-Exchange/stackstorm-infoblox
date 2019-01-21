@@ -2,7 +2,7 @@
 ref: infoblox
 name: infoblox
 description: Infoblox IPAM, DNS and DHCP management
-version: 1.0.0
+version: 0.3.0
 keywords:
   - IPAM
   - DNS

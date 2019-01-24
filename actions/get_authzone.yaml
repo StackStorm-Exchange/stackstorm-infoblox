@@ -1,5 +1,5 @@
 ---
-name: get_authuone
+name: get_authzone
 runner_type: python-script
 description: Get authoritative zones
 enabled: true

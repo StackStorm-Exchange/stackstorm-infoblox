@@ -13,7 +13,7 @@ class RestartServicesTestCase(InfobloxBaseActionTestCase):
 
         # This assumes that the result of get_object doens't contain reference of member
         action.connection.get_object = mock.Mock(return_value=[
-            {'_ref': 'foo'},
+            {'ref': 'foo'},
             {'result': 'invalid_data'},
             None
         ])

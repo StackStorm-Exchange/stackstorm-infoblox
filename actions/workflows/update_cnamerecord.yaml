@@ -1,0 +1,39 @@
+version: 1.0
+
+input:
+  - name
+  - zone
+  - updating_canonical
+  - updating_name
+
+vars:
+  - stderr: ''
+
+tasks:
+  get_target_items:
+    action: infoblox.get_cnamerecord
+    input:
+      name: <% ctx(name) %>
+      zone: <% ctx(zone) %>
+    next:
+      - when: <% succeeded() and result().result %>
+        do: update_records
+
+      - when: <% succeeded() and not result().result %>
+        publish:
+          - stderr: 'There was no object to match the condition you specified.'
+        do: fail
+
+  update_records:
+    with: <% task(get_target_items).result.result %>
+    action: infoblox.update_object
+    input:
+      ref: <% item().ref %>
+      payload:
+        canonical: <% ctx(updating_canonical) %>
+        name: <% ctx(updating_name) %>
+
+output:
+  - result: <% task(update_records).result %>
+  - stderr: <% ctx(stderr) %>
+

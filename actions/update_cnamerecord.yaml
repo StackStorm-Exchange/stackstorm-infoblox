@@ -1,0 +1,21 @@
+---
+name: update_cnamerecord
+pack: infoblox
+runner_type: orquesta
+description: Update CNAME Records
+entry_point: workflows/update_cnamerecord.yaml
+enabled: true
+parameters:
+  zone:
+    type: string
+    description: Filter by zone name to be updated
+  name: 
+    type: string
+    description: Filter by record name to be updated
+    required: true
+  updating_canonical:
+    type: string
+    description: Canonical record name after updating
+  updating_name: 
+    type: string
+    description: Record name after updating

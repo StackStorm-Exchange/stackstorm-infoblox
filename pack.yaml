@@ -2,7 +2,11 @@
 ref: infoblox
 name: infoblox
 description: Infoblox IPAM, DNS and DHCP management
+<<<<<<< HEAD
 version: 0.3.0
+=======
+version: 0.2.1
+>>>>>>> fixed/get_authzone
 keywords:
   - IPAM
   - DNS

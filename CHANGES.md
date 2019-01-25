@@ -11,6 +11,11 @@
 - Fixed typo of action get_authzone (changed action name from get_authuone to get_authzone)
 - Updated returned value format of get_action method from `_ref` to `ref`.
 
+## 0.2.0
+
+- Added an action to add Authoritative Zone for DNS
+- Added an action to restart all member services
+
 ## 0.1.0
 
 - Initial Release of Infoblox integration

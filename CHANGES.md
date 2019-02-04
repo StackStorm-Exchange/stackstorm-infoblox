@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.4.0
+
+- Added an action to create a HOST record for DNS
+- Added an action to delete HOST records for DNS
+- Added an action to update HOST records for DNS
+- Added some parameters to the `get_hostrecord` action to filter the results (This change has backward compatibility)
+- Refactored implementation of the `create_object` action for adding an error handler
+
 ## 0.3.0
 
 - Added an action to delete specified A records of DNS

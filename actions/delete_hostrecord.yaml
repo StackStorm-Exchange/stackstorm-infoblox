@@ -1,0 +1,15 @@
+---
+name: delete_hostrecord
+pack: infoblox
+runner_type: orquesta
+description: Delete HOST Records
+entry_point: workflows/delete_hostrecord.yaml
+enabled: true
+parameters:
+  name: 
+    type: string
+    description: Record name to be deleted
+    required: true
+  view:
+    type: string
+    description: Filter by DNS view

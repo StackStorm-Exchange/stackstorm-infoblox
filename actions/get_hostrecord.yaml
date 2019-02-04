@@ -1,7 +1,8 @@
 ---
 name: get_hostrecord
+pack: infoblox
 runner_type: python-script
-description: Get host records
+description: Get HOST records
 enabled: true
 entry_point: get_object.py
 parameters:
@@ -9,6 +10,12 @@ parameters:
     type: string
     immutable: true
     default: 'record:host'
+  name:
+    type: string
+    description: Filter by name of HOST record
+  view:
+    type: string
+    description: Filter by DNS view
   ea:
     type: array
     description: "Example: ['IN_Country=FR','IN_DeviceType=AGGREG']"

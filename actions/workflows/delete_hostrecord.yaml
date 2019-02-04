@@ -1,0 +1,33 @@
+version: 1.0
+
+input:
+  - name
+  - view
+
+vars:
+  - stderr: ''
+
+tasks:
+  get_target_items:
+    action: infoblox.get_hostrecord
+    input:
+      name: <% ctx(name) %>
+      view: <% ctx(view) %>
+    next:
+      - when: <% succeeded() and result().result %>
+        do: delete_records
+
+      - when: <% succeeded() and not result().result %>
+        publish:
+          - stderr: 'There was no object to match the condition you specified.'
+        do: fail
+
+  delete_records:
+    with: <% task(get_target_items).result.result %>
+    action: infoblox.delete_object
+    input:
+      ref: <% item().ref %>
+
+output:
+  - result: <% task(get_target_items).result %>
+  - stderr: <% ctx(stderr) %>

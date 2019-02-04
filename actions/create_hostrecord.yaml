@@ -1,0 +1,35 @@
+---
+name: create_hostrecord
+pack: infoblox
+runner_type: python-script
+description: Create a Host record
+enabled: true
+entry_point: create_object.py
+parameters:
+  object_type:
+    type: string
+    immutable: true
+    default: 'record:host'
+  name:
+    type: string
+    required: true
+    description: The name of creating host record
+  view:
+    type: string
+    description: Filter by DNS view
+  ttl:
+    type: integer
+    default: 28800
+    description: TTL of creating record
+  ipv4addrs:
+    type: array
+    description: IPv4 address informations to register the creating host record
+    properties:
+      mac:
+        type: string
+        description: MAC address to register
+        default: ''
+      ipv4addr:
+        type: string
+        required: true
+        description: IPv4 address to register

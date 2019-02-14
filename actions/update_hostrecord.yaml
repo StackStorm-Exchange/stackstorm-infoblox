@@ -1,0 +1,34 @@
+---
+name: update_hostrecord
+pack: infoblox
+runner_type: orquesta
+description: Update HOST records
+enabled: true
+entry_point: workflows/update_hostrecord.yaml
+parameters:
+  name:
+    type: string
+    required: true
+    description: The name of HOST record to update
+  updating_name:
+    type: string
+    description: The name of HOST record after update
+  view:
+    type: string
+    description: Filter by DNS view
+  ttl:
+    type: integer
+    default: 28800
+    description: TTL of updating record
+  ipv4addrs:
+    type: array
+    description: IPv4 address informations to update
+    properties:
+      mac:
+        type: string
+        description: MAC address to register
+        default: ''
+      ipv4addr:
+        type: string
+        required: true
+        description: IPv4 address to register

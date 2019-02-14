@@ -1,3 +1,4 @@
+from infoblox_client import exceptions
 from lib.action import InfobloxBaseAction
 
 __all__ = [
@@ -7,5 +8,7 @@ __all__ = [
 
 class CreateObjectAction(InfobloxBaseAction):
     def run(self, object_type, **kwargs):
-        result = self.connection.create_object(object_type, kwargs)
-        return result
+        try:
+            return (True, self.connection.create_object(object_type, kwargs))
+        except exceptions.InfobloxCannotCreateObject as e:
+            return (False, e.response)

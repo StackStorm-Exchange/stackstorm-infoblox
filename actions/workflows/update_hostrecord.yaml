@@ -1,0 +1,45 @@
+version: 1.0
+
+input:
+  - name
+  - updating_name
+  - view
+  - ttl
+  - ipv4addrs
+
+vars:
+  - stderr:
+  - result:
+
+tasks:
+  get_target_items:
+    action: infoblox.get_hostrecord
+    input:
+      name: <% ctx(name) %>
+      view: <% ctx(view) %>
+    next:
+      - when: <% succeeded() and result().result %>
+        do: update_records
+
+      - when: <% succeeded() and not result().result %>
+        publish:
+          - stderr: 'There was no object to match the condition you specified.'
+        do: fail
+
+  update_records:
+    with: <% task(get_target_items).result.result %>
+    action: infoblox.update_object
+    input:
+      ref: <% item().ref %>
+      payload:
+        ttl: <% ctx(ttl) %>
+        ipv4addrs: <% ctx(ipv4addrs) %>
+        name: <% ctx(updating_name) %>
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - result: <% result() %>
+
+output:
+  - result: <% ctx(result) %>
+  - stderr: <% ctx(stderr) %>

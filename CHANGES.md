@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.1
+
+- Add explicit support for Python 2 and 3
+
 ## 0.4.0
 
 - Added an action to create a HOST record for DNS

@@ -16,7 +16,7 @@
     secret: false
     required: true
   wapi_version:
-    description: "Hostname of Infloblox"
+    description: "Wapi version of Infoblox"
     type: "string"
     secret: false
     required: false

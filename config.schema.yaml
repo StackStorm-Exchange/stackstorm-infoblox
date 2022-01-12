@@ -15,6 +15,12 @@
     type: "string"
     secret: false
     required: true
+  wapi_version:
+    description: "Wapi version of Infoblox"
+    type: "string"
+    secret: false
+    required: false
+    default: "v2.9"
   verify_ssl:
     description: "Verify SSL of Infoblox API"
     default: true

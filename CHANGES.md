@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1
+
+- Bug fix for get_object_details RuntimeError with changing keys.
+
 ## 1.1.0
 
 - Added WAPI version variable to config schema

@@ -22,7 +22,7 @@ class InfobloxConnector(connector.Connector):
             # When non-dict value is specified, this returns it without inspection
             return dict_value
 
-        for key in dict_value.keys():
+        for key in list(dict_value.keys()):
             # This routine also inspect every leaf elements.
             if isinstance(dict_value[key], dict):
                 dict_value[key] = self._inspect_and_interchane_dict(dict_value[key])
